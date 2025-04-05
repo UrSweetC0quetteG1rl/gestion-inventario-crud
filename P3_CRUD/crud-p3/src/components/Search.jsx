@@ -5,6 +5,8 @@ export default function SearchAndFilter({
   onCategoryChange,
   categories,
 }) {
+
+  //Devolvera un search var para buscar productos por nombre
   return (
     <div className="search-filter-container">
       <div className="search-filter-row">
