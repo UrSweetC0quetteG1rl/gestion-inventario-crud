@@ -2,7 +2,7 @@ export default function InventoryList({ items, onDelete, onEdit }) {
   const formatPrice = (price) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "USD", //formatea el dinero para que aparezca con el signo $
     }).format(price);
   };
 
