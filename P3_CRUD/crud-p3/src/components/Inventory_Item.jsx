@@ -1,4 +1,5 @@
 export default function InventoryItem({ item, onDelete, onEdit }) {
+  ///devolvera el modelo de datos para el formulario
   return (
     <div className="inventory-item">
       <h3>{item.name}</h3>
