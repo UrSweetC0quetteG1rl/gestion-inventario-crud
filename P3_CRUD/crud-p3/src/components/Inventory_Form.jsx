@@ -55,7 +55,7 @@ export default function InventoryForm({ onSubmit, initialData, onCancel }) {
       });
     }
   };
-
+  //devolvera un componente de tipo formulario para agregar producto
   return (
     <form className="inventory-form" onSubmit={handleSubmit}>
       <div className="form-group">
