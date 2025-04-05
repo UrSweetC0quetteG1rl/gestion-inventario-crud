@@ -21,7 +21,7 @@ Tiene como fin ayudar a mantener el orden de los productos que se agregan al inv
 - **Filtrar** productos por categoría
 - Comunicación entre interfaz de usuario y la base de datos.
 
-##Instalación del proyecto
+## ୭ ˚. ᵎᵎ Instalación del proyecto
 
 - Clonar el repositorio.
 - Instalar las dependencias utilizando: npm install
