@@ -18,18 +18,18 @@ const dbConfig = {
 sql
   .connect(dbConfig)
   .then(() => {
-    console.log("✅ Conexión exitosa a SQL Server");
+    console.log("Conexión exitosa a SQL Server");
   })
   .catch((err) => {
-    console.error("❌ Error conectando a la base de datos:", err);
+    console.error("Error conectando a la base de datos:", err);
   });
 
 async function connectToDatabase() {
   try {
     await sql.connect(dbConfig);
-    console.log("Connected to SQL Server database");
+    console.log("Conectado a la base de datos SQL.");
   } catch (err) {
-    console.error("Error connecting to SQL Server database:", err);
+    console.error("Error connectandose a la base de datos SQL Server:", err);
     process.exit(1);
   }
 }
@@ -43,8 +43,8 @@ app.get("/api/inventory", async (req, res) => {
     const result = await sql.query(`SELECT * FROM inventory`);
     res.json(result.recordset);
   } catch (err) {
-    console.error("Error fetching inventory items:", err);
-    res.status(500).json({ error: "Error fetching inventory items" });
+    console.error("Error obteniendo inventario:", err);
+    res.status(500).json({ error: "Error cargando inventario." });
   }
 });
 
@@ -55,13 +55,13 @@ app.get("/api/inventory/:id", async (req, res) => {
     );
 
     if (result.recordset.length === 0) {
-      return res.status(404).json({ error: "Item not found" });
+      return res.status(404).json({ error: "Producto no encontrado" });
     }
 
     res.json(result.recordset[0]);
   } catch (err) {
-    console.error("Error fetching inventory item:", err);
-    res.status(500).json({ error: "Error fetching inventory item" });
+    console.error("Error obteniendo inventario:", err);
+    res.status(500).json({ error: "Error cargando inventario." });
   }
 });
 
@@ -69,7 +69,7 @@ app.post("/api/inventory", async (req, res) => {
   const { name, description, category, quantity, price } = req.body;
 
   if (!name || !category) {
-    return res.status(400).json({ error: "Name and category are required" });
+    return res.status(400).json({ error: "Nombre y categoria son campos necesarios." });
   }
 
   try {
@@ -90,8 +90,8 @@ app.post("/api/inventory", async (req, res) => {
       price,
     });
   } catch (err) {
-    console.error("Error creating inventory item:", err);
-    res.status(500).json({ error: "Error creating inventory item" });
+    console.error("Error creando producto:", err);
+    res.status(500).json({ error: "Error creando producto" });
   }
 });
 
@@ -100,7 +100,7 @@ app.put("/api/inventory/:id", async (req, res) => {
   const id = req.params.id;
 
   if (!name || !category) {
-    return res.status(400).json({ error: "Name and category are required" });
+    return res.status(400).json({ error: "Nombre y categoria son campos necesarios." });
   }
 
   try {
@@ -115,7 +115,7 @@ app.put("/api/inventory/:id", async (req, res) => {
     `);
 
     if (result.rowsAffected[0] === 0) {
-      return res.status(404).json({ error: "Item not found" });
+      return res.status(404).json({ error: "Producto no encontrado." });
     }
 
     res.json({
@@ -127,8 +127,8 @@ app.put("/api/inventory/:id", async (req, res) => {
       price,
     });
   } catch (err) {
-    console.error("Error updating inventory item:", err);
-    res.status(500).json({ error: "Error updating inventory item" });
+    console.error("Error actualizando inventario: ", err);
+    res.status(500).json({ error: "Error actualizando inventario." });
   }
 });
 
@@ -139,16 +139,16 @@ app.delete("/api/inventory/:id", async (req, res) => {
     );
 
     if (result.rowsAffected[0] === 0) {
-      return res.status(404).json({ error: "Item not found" });
+      return res.status(404).json({ error: "Producto no encontrado." });
     }
 
-    res.json({ message: "Item deleted successfully" });
+    res.json({ message: "Producto eliminado exitosamente." });
   } catch (err) {
-    console.error("Error deleting inventory item:", err);
-    res.status(500).json({ error: "Error deleting inventory item" });
+    console.error("Error eliminando el producto:", err);
+    res.status(500).json({ error: "Error eliminado el producto." });
   }
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Servidor corriendo el el puerto: ${port}`);
 });
