@@ -18,10 +18,10 @@ const dbConfig = {
 sql
   .connect(dbConfig)
   .then(() => {
-    console.log("✅ Conexión exitosa a SQL Server");
+    console.log("Conexión exitosa a SQL Server");
   })
   .catch((err) => {
-    console.error("❌ Error conectando a la base de datos:", err);
+    console.error("Error conectando a la base de datos:", err);
   });
 
 async function connectToDatabase() {
@@ -47,7 +47,7 @@ app.get("/api/inventory", async (req, res) => {
     res.status(500).json({ error: "Error fetching inventory items" });
   }
 });
-
+//buscar el producto especifico
 app.get("/api/inventory/:id", async (req, res) => {
   try {
     const result = await sql.query(
